@@ -1,0 +1,2 @@
+TEST_BASE_URL=https://reqres.in/
+PROD_BASE_URL=https://restful-booker.herokuapp.com/
