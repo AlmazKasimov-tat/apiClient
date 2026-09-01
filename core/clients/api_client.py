@@ -110,7 +110,7 @@ class APIClient:
         return response.json()
 
 
-    def update_booking(self, booking_id, booking_data):
+    def full_update_booking(self, booking_id, booking_data):
         with allure.step('Updating booking'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
             response = self.session.put(url, json=booking_data, auth=HTTPSBasicAuth(Users.USERNAME, Users.PASSWORD))
@@ -120,7 +120,7 @@ class APIClient:
         return response.json()
 
 
-    def update_booking_by_id(self, booking_id, booking_data):
+    def partial_update_booking_by_id(self, booking_id, booking_data):
         with allure.step(f'Patching booking by id: {booking_id}'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
             response = self.session.patch(url, json=booking_data, auth=HTTPSBasicAuth(Users.USERNAME, Users.PASSWORD))
