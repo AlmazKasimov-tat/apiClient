@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from core.settings.environments import Environments
 from core.clients.endpoints import Endpoints
 from core.settings.config import Users, Timeouts
-from requests import HTTPBasicAuth
+from requests.auth import HTTPBasicAuth
 
 import allure
 
@@ -83,7 +83,7 @@ class APIClient:
     def delete_booking_by_id(self, booking_id):
         with allure.step('Deleting booking by id'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
-            response = self.session.delete(url, auth=HTTPSBasicAuth(Users.USERNAME, Users.PASSWORD))
+            response = self.session.delete(url, auth=HTTPBasicAuth(Users.USERNAME, Users.PASSWORD))
             response.raise_for_status()
         with allure.step('Assert status code'):
             assert response.status_code == 201, f"Expected status 200 but got {response.status_code}"
@@ -113,7 +113,7 @@ class APIClient:
     def full_update_booking(self, booking_id, booking_data):
         with allure.step('Updating booking'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
-            response = self.session.put(url, json=booking_data, auth=HTTPSBasicAuth(Users.USERNAME, Users.PASSWORD))
+            response = self.session.put(url, json=booking_data, auth=HTTPBasicAuth(Users.USERNAME, Users.PASSWORD))
             response.raise_for_status()
         with allure.step('Assert status code'):
             assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
@@ -123,7 +123,7 @@ class APIClient:
     def partial_update_booking_by_id(self, booking_id, booking_data):
         with allure.step(f'Patching booking by id: {booking_id}'):
             url = f"{self.base_url}{Endpoints.BOOKING_ENDPOINT}/{booking_id}"
-            response = self.session.patch(url, json=booking_data, auth=HTTPSBasicAuth(Users.USERNAME, Users.PASSWORD))
+            response = self.session.patch(url, json=booking_data, auth=HTTPBasicAuth(Users.USERNAME, Users.PASSWORD))
             response.raise_for_status()
         with allure.step('Assert status code'):
             assert response.status_code == 200, f"Expected status 200 but got {response.status_code}"
