@@ -1,9 +1,7 @@
-from enum import Enum
+class Users:
+    USERNAME = 'admin'
+    PASSWORD = 'password123'
 
-class Users(Enum):
-    USERNAME = "username"
-    PASSWORD = "password123"
-
-class Timeouts(Enum):
-    TIMEOUT = 5
-
+class Timeouts:
+    REQUEST_TIMEOUT = 30
+    CONNECT_TIMEOUT = 10
