@@ -9,18 +9,10 @@ from requests.auth import HTTPBasicAuth
 
 import allure
 
-# Находим .env файл автоматически (ищет вверх по дереву папок)
-env_file = find_dotenv()
-if env_file:
-    load_dotenv(env_file)
-else:
-    # Если не нашли, пытаемся загрузить из текущей директории
-    load_dotenv()
-# Временная проверка
-print("=" * 50)
-print(f"ENVIRONMENT = {os.getenv('ENVIRONMENT')}")
-print(f"TEST_BASE_URL = {os.getenv('TEST_BASE_URL')}")
-print("=" * 50)
+
+load_dotenv()
+
+
 
 class APIClient:
     def __init__(self):
