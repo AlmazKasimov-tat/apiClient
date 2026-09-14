@@ -39,3 +39,19 @@ def generate_random_booking_data(booking_dates):
     }
     
     return data
+
+
+@pytest.fixture
+def valid_booking_data():
+    """Базовые валидные данные для создания бронирования"""
+    return {
+        "firstname": "John",
+        "lastname": "Doe",
+        "totalprice": 150,
+        "depositpaid": True,
+        "bookingdates": {
+            "checkin": "2025-02-01",
+            "checkout": "2025-02-10"
+        },
+        "additionalneeds": "Breakfast"
+    }
